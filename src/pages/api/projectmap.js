@@ -9,13 +9,14 @@ export default async function handler(req, res) {
   try {
     const scrapedProject = await scrapeProjects(city)
     console.log('scrapedProject',scrapedProject)
+    if (scrapedProject.length === 0) {
+        return res.status(404).json({ error: 'No projects found' });
+      }
     const geoLogicalCoords = await Promise.all(
         scrapedProject.map(async (p) => {
-          const coords = await geocodeLocation(`${p.location}, ${city}`);
+          const coords = await geocodeLocation(p.location);
           return {
-            ...p,
-            latitude: coords.latitude,
-            longitude: coords.longitude,
+            ...p,...coords
           };
         })
       );
