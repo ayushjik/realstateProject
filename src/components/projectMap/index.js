@@ -18,7 +18,7 @@ export default function ProjectMap({ projects }) {
   return (
     <MapContainer center={[17.385, 78.4867]} zoom={12} style={{ height: '500px', width: '100%' }}>
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      {projects.map((p, i) => (
+      {projects .filter(p => p.latitude && p.longitude).map((p, i) => (
         <Marker key={i} position={[p.latitude, p.longitude]} >
           <Popup>
             <b>{p.name}</b><br />

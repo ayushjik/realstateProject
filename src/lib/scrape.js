@@ -11,7 +11,6 @@ export default async function scrapeProjects(city) {
                 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
               'Accept-Language': 'en-US,en;q=0.9',
             },});
-        //   console.log('scrapedata', data)
         const $ = cheerio.load(data);
         const projects = [];
 
@@ -28,7 +27,7 @@ export default async function scrapeProjects(city) {
 
     //   console.log('scrape', projects)
 
-        return projects.slice(0, 1);
+        return projects.slice(0, 5);
     }catch(error){
         console.error('Scrape error:', error.message);
         return [];
