@@ -14,6 +14,6 @@ export default async function geocodeLocation(location) {
   console.log('geologicaldata',data?.latitude, data?.longitude)
   return {
     latitude: data?.latitude || 0,
-    longitude: data?.longitude || 0
+    longitude: data?.longitude || 0 //
   };
 }
